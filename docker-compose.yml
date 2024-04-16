@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  django_app:
+    build:
+      context: ./django_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django_app:/django_app
+    depends_on:
+      - database
+
+  database:
+    build:
+      context: ./database
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./database:/database
